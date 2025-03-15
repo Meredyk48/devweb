@@ -1,0 +1,100 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h1>Contato</h1>
+          <form action="{% url 'contato' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="id_nome">Nome</label>
+              <input
+                type="text"
+                name="nome"
+                id="id_nome"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="id_email">E-mail</label>
+              <input
+                type="email"
+                name="email"
+                id="id_email"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="id_mensagem">Mensagem</label>
+              <textarea
+                name="mensagem"
+                id="id_mensagem"
+                class="form-control"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html> -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2 class="text-center">Contato Selecionado</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th>CEP</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>Data de Criação</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ contato.nome }}</td>
+            <td>{{ contato.email }}</td>
+            <td>{{ contato.telefone }}</td>
+            <td>{{ contato.endereco }}</td>
+            <td>{{ contato.cep }}</td>
+            <td>{{ contato.cidade }}</td>
+            <td>{{ contato.estado }}</td>
+            <td>{{ contato.data_criacao }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
