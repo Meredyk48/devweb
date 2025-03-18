@@ -9,32 +9,52 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <!-- <link rel="stylesheet" href="{% static 'style.css' %}" /> -->
   </head>
   <body>
     <div class="container mt-5">
       <h2 class="text-center">Lista de Contatos</h2>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Nome do Contato</th>
-            <th>Data de Criação</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for contato in contatos %}
-          <tr>
-            <td>
-              >
-              <a href="{% url 'contato_detalhe' contato.id %}"
-                >{{ contato.nome }}</a
-              >
-            </td>
-            <td>{{ contato.data_criacao }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </body>
+      <div class="d-flex justify-content-center">
+        <table class="table table-striped w-75">
+          <thead>
+            <tr>
+              <th class="text-center">Nome do Contato</th>
+              <th class="text-center">Data de Criação</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for contato in contatos %}
+            <tr>
+              <td class="text-center">
+                <a href="{% url 'contato_detalhe' contato.id %}"
+                  >{{ contato.nome }}</a
+                >
+              </td>
+              <td class="text-center">{{ contato.data_criacao }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="container mt-5">
+      <h2 class="text-center">Lista de Categorias</h2>
+      <div class="d-flex justify-content-center">
+        <table class="table table-striped w-75">
+          <thead>
+            <tr>
+              <th class="text-center">Nome da Categoria</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for categoria in categorias %}
+            <tr>
+              <td class="text-center">{{ categoria.nome }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
   </body>
 </html>

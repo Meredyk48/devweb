@@ -63,38 +63,41 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <!-- <link rel="stylesheet" href="{% static 'style.css' %}" /> -->
   </head>
   <body>
-    <div class="container mt-5">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+      <div class="card p-4 mt-5 rounded-2">
       <h2 class="text-center">Contato Selecionado</h2>
       <table class="table table-striped">
         <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Telefone</th>
-            <th>Endereço</th>
-            <th>CEP</th>
-            <th>Cidade</th>
-            <th>Estado</th>
-            <th>Data de Criação</th>
-            <th></th>
-          </tr>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Endereço</th>
+          <th>CEP</th>
+          <th>Cidade</th>
+          <th>Estado</th>
+          <th>Data de Criação</th>
+          <th></th>
+        </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{{ contato.nome }}</td>
-            <td>{{ contato.email }}</td>
-            <td>{{ contato.telefone }}</td>
-            <td>{{ contato.endereco }}</td>
-            <td>{{ contato.cep }}</td>
-            <td>{{ contato.cidade }}</td>
-            <td>{{ contato.estado }}</td>
-            <td>{{ contato.data_criacao }}</td>
-          </tr>
+        <tr>
+          <td>{{ contato.nome }}</td>
+          <td>{{ contato.email }}</td>
+          <td>{{ contato.telefone }}</td>
+          <td>{{ contato.endereco }}</td>
+          <td>{{ contato.cep }}</td>
+          <td>{{ contato.cidade }}</td>
+          <td>{{ contato.estado }}</td>
+          <td>{{ contato.data_criacao }}</td>
+        </tr>
         </tbody>
       </table>
+      </div>
+    </div>
     </div>
   </body>
 </html>
