@@ -1,16 +1,19 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
     justify-content: center;
     align-items: center;
-
+    min-height: 100vh;
+    margin: 0;
+    background-color: #3ec12d;
+    background-image: linear-gradient(180deg, #3ec12d 25%, #080402 100%);
+    
 }
 .container {
-    background: #fff;
+    background-color: #77d377;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin-top: 20px;
 }
 h1 {
     color: #333;

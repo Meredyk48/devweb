@@ -1,7 +1,7 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+    {% load static %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -9,21 +9,48 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
-    <body>
-      <div class="container mt-5">
-        <h1 class="text-center">Seja Bem Vindo</h1>
-        <p class="description" style="text-align: center">
-          Clique em Contatos para visualizar a lista de contatos cadastrados:
-        </p>
-        <nav class="navigation" style="text-align: center">
-          <ul>
-            <li><a href="{% url 'contato' %}">Contatos</a></li>
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar-light"
+        style="background-color: #77d377; opacity: 0.9"
+      >
+        <a class="navbar-brand" href="#">Contato</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contato' %}">Contatos</a>
+            </li>
           </ul>
-        </nav>
-      </div>
-    </body>
+        </div>
+      </nav>
+    </header>
+    <div class="container mt-5" style="background-color: #77d377">
+      <h1 class="text-center">Seja Bem Vindo</h1>
+      <p class="description" style="text-align: center">
+        Clique em Contatos para visualizar a lista de contatos cadastrados:
+      </p>
+      <nav class="navigation" style="text-align: center">
+        <ul>
+          <li><a href="{% url 'contato' %}">Contatos</a></li>
+        </ul>
+      </nav>
+    </div>
   </body>
 </html>
