@@ -9,15 +9,15 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <title>Login</title>
+    <title>Register</title>
   </head>
   <body>
     <div class="container mt-5 justify-content-center align-items-center;">
       <div class="row justify-content-center">
         <div class="col-md-6">
-          <form action="{% url 'login' %}" method="POST" class="form-signin">
+          <form action="{% url 'register' %}" method="POST" class="form-signin">
             {% csrf_token %}
-            <h1 class="h3 mb-3 font-weight-normal text-center">Login</h1>
+            <h1 class="h3 mb-3 font-weight-normal text-center">Register</h1>
             <label for="inputUsuario" class="sr-only">Usuário</label>
             <input
               type="text"
@@ -28,6 +28,15 @@
               required
               autofocus
             />
+            <label for="inputEmail" class="sr-only">E-mail</label>
+            <input
+              type="email"
+              id="inputEmail"
+              name="email"
+              class="form-control"
+              placeholder="E-mail"
+              required
+            />
             <label for="inputSenha" class="sr-only">Senha</label>
             <input
               type="password"
@@ -37,12 +46,37 @@
               placeholder="Senha"
               required
             />
+            <label for="inputConfirmarSenha" class="sr-only"
+              >Confirme a senha</label
+            >
+            <input
+              type="password"
+              id="inputConfirmarSenha"
+              name="confirmar_senha"
+              class="form-control"
+              placeholder="Confirme a senha"
+              required
+            />
             <button class="btn btn-lg btn-primary btn-block" type="submit">
-              Entrar
+              Cadastrar
             </button>
+            <a href="{% url 'login' %}" class="btn btn-link btn-block">Login</a>
           </form>
         </div>
       </div>
     </div>
+    {% if messages %} {% for message in messages %}
+    <div
+      class="alert alert-danger"
+      style="
+        text-align: center;
+        margin-top: 10px;
+        color: red;
+        font-weight: bold;
+      "
+    >
+      {{ message }}
+    </div>
+    {% endfor %} {% endif %}
   </body>
 </html>

@@ -2,9 +2,11 @@ from django.shortcuts import render
 from .models import Contato, Categoria
 from django.views.generic import ListView
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
+@login_required(login_url='login')
 def index(request):
     contatos = Contato.objects.all()
     categorias = Categoria.objects.all()
@@ -16,7 +18,7 @@ def index(request):
   #  template_name = 'pages/index.html'
     # context_object_name = 'contatos'
 
-
+@login_required(login_url='login')
 def contato_detalhes(request, id):
     # contato = Contato.objects.get(id=id)
     # , {'contato': contato})
