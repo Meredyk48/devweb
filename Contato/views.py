@@ -29,3 +29,26 @@ def home(request):
     contatos = Contato.objects.all()
     return render(request, 'pages/home.html', {'contatos': contatos})
 #    return render(request, 'pages/home.html')
+
+
+@login_required(login_url='login')
+def contatoform(request):
+    categoria = Categoria.objects.all()
+    if request.method == 'POST':
+        nome = request.POST['nome']
+        email = request.POST['email']
+        telefone = request.POST['telefone']
+        cep = request.POST['cep']
+        cidade = request.POST['cidade']
+        estado = request.POST['estado']
+        categoria = request.POST['categoria']
+
+        contato = Contato(nome=nome, email=email, telefone=telefone,
+                          cep=cep, cidade=cidade, estado=estado, Categoria_id=categoria)
+        contato.save()
+        print(contato)
+        return HttpResponse('Contato cadastrado com sucesso!')
+
+    else:
+        categoria = Categoria.objects.all()
+        return render(request, 'pages/contatoform.html', {'categorias': categoria})

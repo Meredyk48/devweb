@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar-light"
+        style="background-color: #77d377; opacity: 0.9"
+      >
+        <h3 class="mr-auto">{{ request.user }}</h3>
+        <a class="navbar-brand ml-3" href="{% url 'home' %}">Contato</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contato' %}">Contatos</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            {% if not request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %} {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Sair</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div class="container mt-5" style="background-color: #77d377">
+      <h2 class="text-center">Formulário de Contato</h2>
+      <form action="{% url 'contatoform' %}" method="POST" class="form-signin">
+        {% csrf_token %}
+        <label for="inputNome" class="sr-only">Nome</label>
+        <input
+          type="text"
+          id="inputNome"
+          name="nome"
+          class="form-control"
+          placeholder="Nome"
+          required
+          autofocus
+        />
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input
+          type="email"
+          id="inputEmail"
+          name="email"
+          class="form-control"
+          placeholder="Email"
+          required
+        />
+        <label for="inputTelefone" class="sr-only">Telefone</label>
+        <input
+          type="text"
+          id="inputTelefone"
+          name="telefone"
+          class="form-control"
+          placeholder="Telefone"
+          required
+        />
+        <label for="inputEndereco" class="sr-only">Endereço</label>
+        <input
+          type="text"
+          id="inputEndereco"
+          name="endereco"
+          class="form-control"
+          placeholder="Endereço"
+          required
+        />
+        <label for="inputCep" class="sr-only">CEP</label>
+        <input
+          type="text"
+          id="inputCep"
+          name="cep"
+          class="form-control"
+          placeholder="CEP"
+          required
+        />
+        <label for="inputCidade" class="sr-only">Cidade</label>
+        <input
+          type="text"
+          id="inputCidade"
+          name="cidade"
+          class="form-control"
+          placeholder="Cidade"
+          required
+        />
+        <label for="inputEstado" class="sr-only">Estado</label>
+        <input
+          type="text"
+          id="inputEstado"
+          name="estado"
+          class="form-control"
+          placeholder="Estado"
+          required
+        />
+        <label for="inputCategoria" class="sr-only">Categoria</label>
+        <select
+          id="inputCategoria"
+          name="categoria"
+          class="form-control"
+          required
+        >
+          <option value="" disabled selected>Selecione uma categoria</option>
+          {% for categoria in categorias %}
+          <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </div>
+  </body>
+</html>
