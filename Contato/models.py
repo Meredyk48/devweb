@@ -7,6 +7,7 @@ from django.db import models
 class Contato(models.Model):
     nome = models.CharField(max_length=255)
     Categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE)
+    foto = models.ImageField(blank=True, null=True)
     email = models.EmailField(unique=True)
     telefone = models.CharField(max_length=20)
     endereco = models.CharField(max_length=255)

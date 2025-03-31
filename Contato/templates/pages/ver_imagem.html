@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+        <nav
+          class="navbar navbar-expand-lg navbar-light"
+          style="background-color: #77d377; opacity: 0.9"
+        >
+        <h3 class="mr-auto">{{ request.user }}</h3>
+        <a class="navbar-brand ml-3" href="{% url 'home' %}">Contato</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contato' %}">Contatos</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            {% if not request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %} {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Sair</a>
+            </li>
+            {% endif %}
+          </div>
+        </nav>
+      </header>
+    <h1 class="text-center">Visualizar Imagem</h1>
+    <div class="container mt-3" style="background-color: #77d377;">
+      {% for contato in contatos %}
+
+        {% if contato.foto %}
+      <img src="{{ contato.foto.url }}" alt="Imagem do Contato" class="img-fluid" style="max-width: 100%; height: auto;" />
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="d-flex justify-content-center mt-3 mb-3">
+      <a href="{% url 'contato' %}" class="btn btn-primary">Voltar</a>    
+  </body>
+</html>

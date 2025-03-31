@@ -52,3 +52,8 @@ def contatoform(request):
     else:
         categoria = Categoria.objects.all()
         return render(request, 'pages/contatoform.html', {'categorias': categoria})
+
+
+def ver_imagem(request):
+    contatos = Contato.objects.all()
+    return render(request, 'pages/ver_imagem.html', {'contatos': contatos})
