@@ -37,13 +37,14 @@ def contatoform(request):
     if request.method == 'POST':
         nome = request.POST['nome']
         email = request.POST['email']
+        foto = request.FILES['foto']
         telefone = request.POST['telefone']
         cep = request.POST['cep']
         cidade = request.POST['cidade']
         estado = request.POST['estado']
         categoria = request.POST['categoria']
 
-        contato = Contato(nome=nome, email=email, telefone=telefone,
+        contato = Contato(nome=nome, email=email, foto=foto, telefone=telefone,
                           cep=cep, cidade=cidade, estado=estado, Categoria_id=categoria)
         contato.save()
         print(contato)

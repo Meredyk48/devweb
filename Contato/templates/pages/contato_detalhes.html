@@ -66,6 +66,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
+    
     <header>
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #77d377; opacity: 0.9;">
         <h3 class="mr-auto">{{ request.user }}</h3>
@@ -109,6 +110,7 @@
       <table class="table table-striped">
         <thead>
         <tr>
+          <th>Foto</th>
           <th>Nome</th>
           <th>Email</th>
           <th>Telefone</th>
@@ -122,6 +124,12 @@
         </thead>
         <tbody>
         <tr>
+          {% if contato.foto %}
+          <!-- <td>{{ contato.foto.url }}</td> --><td>
+          <img src="{{ contato.foto.url }}" alt="Imagem do Contato" class="img-fluid rounded-circle" style="max-width: 30%; height: auto;" /> <!-- event click na imagem para expandir na própria tela-->
+          </td>
+          {% else %}
+          {% endif %}
           <td>{{ contato.nome }}</td>
           <td>{{ contato.email }}</td>
           <td>{{ contato.telefone }}</td>
@@ -129,8 +137,7 @@
           <td>{{ contato.cep }}</td>
           <td>{{ contato.cidade }}</td>
           <td>{{ contato.estado }}</td>
-          <td>{{ contato.data_criacao }}</td>
-        </tr>
+          <td>{{ contato.data_criacao|date:"d/m/Y" }}</td>
         </tbody>
       </table>
       </div>

@@ -55,7 +55,12 @@
     </header>
     <div class="container mt-5" style="background-color: #77d377">
       <h2 class="text-center">Formulário de Contato</h2>
-      <form action="{% url 'contatoform' %}" method="POST" class="form-signin">
+      <form
+        action="{% url 'contatoform' %}"
+        method="POST"
+        class="form-signin"
+        enctype="multipart/form-data"
+      >
         {% csrf_token %}
         <label for="inputNome" class="sr-only">Nome</label>
         <input
@@ -74,6 +79,15 @@
           name="email"
           class="form-control"
           placeholder="Email"
+          required
+        />
+        <label for="inputFoto" class="sr-only">Foto</label>
+        <input
+          type="file"
+          id="inputFoto"
+          name="foto"
+          class="form-control"
+          placeholder="Foto"
           required
         />
         <label for="inputTelefone" class="sr-only">Telefone</label>

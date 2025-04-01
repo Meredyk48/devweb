@@ -57,7 +57,7 @@
       {% for contato in contatos %}
 
         {% if contato.foto %}
-      <img src="{{ contato.foto.url }}" alt="Imagem do Contato" class="img-fluid" style="max-width: 100%; height: auto;" />
+      <img src="{{ contato.foto.url }}" alt="Imagem do Contato" class="img-fluid rounded-circle" style="max-width: 100%; height: auto;" />
         {% endif %}
       {% endfor %}
     </div>
